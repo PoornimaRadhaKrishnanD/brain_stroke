@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Signup</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+            width: 300px;
+            text-align: center;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background: #6e8efb;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        button:hover {
+            background: #5a7ce1;
+        }
+        a {
+            text-decoration: none;
+            display: block;
+            margin-top: 10px;
+            color: #6e8efb;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Signup</h2>
+        <form method="POST" onsubmit="return validateForm()">
+            <input type="text" name="username" placeholder="Username" required><br>
+            <input type="email" name="email" placeholder="Email" required><br>
+            <input type="text" name="phone" id="phone" placeholder="Phone Number" required><br>
+            <input type="password" name="password" placeholder="Password" required><br>
+            <button type="submit">Signup</button>
+        </form>
+        <a href="{{ url_for('login') }}">Already have an account? Login</a>
+    </div>
+
+    <script>
+        function validateForm() {
+            var phone = document.getElementById("phone").value;
+            var phonePattern = /^[0-9]{10}$/; // Ensures 10-digit number
+            
+            if (!phonePattern.test(phone)) {
+                alert("Please enter a valid 10-digit phone number!");
+                return false;
+            }
+            return true;
+        }
+    </script>
+
+</body>
+</html>
